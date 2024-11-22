@@ -15,7 +15,7 @@ article {
   box-sizing: border-box;
   max-width: calc(20% - 1rem);
   aspect-ratio: 1 / 1;
-  margin: 1rem; /* Margen para separación entre tarjetas */
+  margin: 2%; /* Margen para separación entre tarjetas */
   border-radius: 0.5rem;
   transition: transform 0.5s;
   transform-style: preserve-3d;
@@ -33,11 +33,22 @@ article img {
   border-radius: 0.5rem; /* Bordes redondeados */
 }
 
+@media (max-width: 450px) {
+  /* Especificidad 0, 0, 1 */
+  article {
+    flex: 1 0 calc(33.33% - 1rem);
+    max-width: calc(33.33% - 1rem);
+  }
+  article h4 {
+    font-size: 50%;
+  }
+}
+
 /* Especificidad 0, 0, 2 */
 article h4 {
   margin: 0;
   text-align: center;
- font-size: 100%;
+  font-size: 100%;
   /* Redefinicion de backface-visibility*/
   color: #aa0a0af2;
   /* Definicion de color de primer plano con herencia del color de fondo por h4 */
