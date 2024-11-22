@@ -37,7 +37,7 @@ article img {
 article h4 {
   margin: 0;
   text-align: center;
-  font-size: 1.5rem;
+ font-size: 100%;
   /* Redefinicion de backface-visibility*/
   color: #aa0a0af2;
   /* Definicion de color de primer plano con herencia del color de fondo por h4 */
