@@ -1,0 +1,97 @@
+/* 
+    Documento creado por Manuel García Baldó (UO295497) 
+    SEW - 3er curso del Grado en Ingeniería Informática del Software - EII - UNIOVI 
+*/
+
+/* Especificidad 0, 0, 1 */
+header {
+  background-color: #ff1100ef;
+  color: #e5e5e5;
+  box-shadow: 0 0.1rem .8rem rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  padding: 2vh 4vw; /* Espacio interior */
+  justify-content: space-between; /* Distribuye h1 y nav */
+  align-items: center; /* Centra verticalmente */
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Especificidad 0, 0, 1 */
+nav {
+  font-size: 0.9rem;
+  letter-spacing: 0.1vw;
+  padding-top: 0.5em; /* Espacio interior */
+  flex-wrap: wrap;
+}
+
+/* Especificidad 0, 0, 2 */
+nav a {
+  color: white;
+  background-color: rgba(36, 7, 7, 0.556);
+  text-decoration: none;
+  padding: 0.8vh 1vw; /* Espacio interior */
+  line-height: 2em;
+}
+
+/* Especificidad 0, 1, 2 */
+nav a.active {
+  background-color: rgb(80, 10, 10); /* Fondo más oscuro */
+  color: #ffcc00; /* Cambia el color del texto a amarillo */
+  font-weight: bold;
+}
+
+/* Especificidad 0, 0, 2 */
+h1 a {
+  color: #ffffff;
+  /* background-color definido por la herencia de body */
+  font-size: 5vw;
+  font-family: Georgia, serif;
+  letter-spacing: 1vw; /* Espacio entre letras */
+  text-decoration: none;
+  text-align: initial;
+}
+
+@media (max-width: 650px) {
+  /* Especificidad 0, 1, 2 
+    migas
+  */
+  h1 a {
+    /*Redefinicion de font-size*/
+    font-size: 2rem;
+  }
+  header {
+    min-width:250px;
+  }
+  nav {
+    line-height: 3em;
+    max-width: 70%;
+    min-width: 15rem;
+    text-align: center;
+  }
+}
+
+/* Especificidad 0, 0, 1 */
+footer {
+  color: #ffffff;
+  background-color: #333333;
+  padding: 4% 10%;
+  text-align: center;
+}
+
+/* Especificidad 0, 1, 2 
+    migas
+  */
+body > p :first-of-type {
+  /* background-color definido por la herencia de p */
+  background-color: aliceblue;
+  font-size: 1em;
+}
+
+@media (max-width: 465px) {
+  /* Especificidad 0, 1, 2 
+    migas
+  */
+  body > p :first-of-type {
+    display: none;
+  }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<!-- Documento creado por Manuel García Baldó (UO295497) -->
+<!-- SEW - 3er curso del Grado en Ingeniería Informática del Software - EII - UNIOVI -->
+
+<html lang="es">
+  <head>
+    <!-- Datos que describen el documento -->
+    <title>F1 Desktop</title>
+
+    <meta charset="UTF-8" />
+    <meta name="author" content="Manuel García Baldó (UO295497)" />
+    <meta name="description" content="descripcion ........" />
+    <meta
+      name="keywords"
+      content="noticias, F1, carreras, noticias, ultima, hora"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/article_elements.css" />
+    <link rel="icon" href="multimedia/imagenes/favicon.ico" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/noticias.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1><a href="index.html" title="Inicio">F1 Desktop</a></h1>
+
+      <!-- Datos con el contenidos que aparece en el navegador -->
+      <nav>
+        <a href="index.html" title="Inicio">Inicio</a>
+        <a href="piloto.html" title="Enlace a la sección del piloto">Piloto</a>
+        <a
+          href="noticias.html"
+          title="Enlace al apartado de noticias"
+          class="active"
+          >Noticias</a
+        >
+        <a href="calendario.html" title="Enlace al calendario de la temporada"
+          >Calendario</a
+        >
+        <a href="meteorologia.html" title="Enlace a la meteorología"
+          >Meteorología</a
+        >
+        <a href="circuito.html" title="Enlace al circuito">Circuito</a>
+        <a href="viajes.html" title="Enlace al apartado de viajes">Viajes</a>
+        <a href="juegos.html" title="Enlace al apartado de juegos">Juegos</a>
+      </nav>
+    </header>
+
+    <p>Estás en: <a href="index.html" title="Inicio">Inicio</a> >> Noticias</p>
+
+    <main>
+      <section>
+        <h2>Noticias</h2>
+        <input
+          type="file"
+          accept=".txt"
+          aria-label="Cargar archivo de noticias"
+        />
+
+        <section>
+          <h3>Últimas noticias</h3>
+          <!-- Contenido de noticias cargado por JavaScript -->
+        </section>
+      </section>
+    </main>
+
+    <footer>En desarrollo</footer>
+
+    <script src="js/noticias.js"></script>
+  </body>
+</html>

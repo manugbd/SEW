@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.uniovi.es" elementFormDefault="qualified"
+	targetNamespace="http://www.uniovi.es" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!-- Tipos simples para restricciones de valores -->
+	<xs:simpleType name="longitudType">
+		<xs:restriction base="xs:float">
+			<xs:maxExclusive value="90" />
+			<xs:minExclusive value="-90" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="latitudType">
+		<xs:restriction base="xs:float">
+			<xs:maxExclusive value="90" />
+			<xs:minExclusive value="-90" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="altitudType">
+		<xs:restriction base="xs:float">
+			<xs:minExclusive value="0" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="positiveFloat">
+		<xs:restriction base="xs:float">
+			<xs:minExclusive value="0" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="circuito">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="1" ref="nombre" />
+				<xs:element minOccurs="1" maxOccurs="1" ref="ubicacion" />
+				<xs:element minOccurs="1" maxOccurs="1" ref="longitudCircuito" />
+				<xs:element minOccurs="1" maxOccurs="1" ref="anchuraMedia" />
+				<xs:element minOccurs="1" maxOccurs="1" ref="carrera" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="coordenadaslineaInicio" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="sectores" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="galeria" />
+				<xs:element minOccurs="0" maxOccurs="1" ref="bibliografia" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="nombre" type="xs:string" />
+
+	<xs:element name="ubicacion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="1" ref="pais" />
+				<xs:element ref="region" />
+				<xs:element minOccurs="1" maxOccurs="1" ref="localidad" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="pais" type="xs:string" />
+	<xs:element name="region" type="xs:string" />
+	<xs:element name="localidad" type="xs:string" />
+
+	<xs:element name="longitudCircuito">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="positiveFloat">
+					<xs:attribute name="unidades" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="anchuraMedia">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="positiveFloat">
+					<xs:attribute name="unidades" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="carrera">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="1" ref="fecha" />
+				<xs:element minOccurs="1" maxOccurs="1" ref="hora" />
+				<xs:element name="numeroVueltas" type="xs:integer" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="fecha" type="xs:date" />
+	<xs:element name="hora" type="xs:time" />
+
+	<xs:element name="coordenadaslineaInicio">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="longitud" />
+				<xs:element ref="latitud" />
+				<xs:element ref="altitud" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="longitud" type="longitudType" />
+	<xs:element name="latitud" type="latitudType" />
+	<xs:element name="altitud">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="altitudType">
+					<xs:attribute name="unidades" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="sectores">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="1" ref="numeroSectores" />
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="sector" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="numeroSectores" type="xs:integer" />
+
+	<xs:element name="sector">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="tramo" />
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="tramo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="coordenadasPtoFinal" />
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="distancia" type="positiveFloat" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="coordenadasPtoFinal">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="longitud" type="longitudType" use="required" />
+					<xs:attribute name="latitud" type="latitudType" use="required" />
+					<xs:attribute name="altitud" type="altitudType" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="galeria">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="1" maxOccurs="5" ref="imagen" />
+				<xs:element minOccurs="0" maxOccurs="3" ref="video" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="imagen" type="xs:string" />
+	<xs:element name="video" type="xs:string" />
+
+	<xs:element name="bibliografia">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="3" maxOccurs="unbounded" ref="referencia" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="referencia" type="xs:string" />
+
+</xs:schema>

@@ -1,0 +1,84 @@
+/* 
+    Documento creado por Manuel García Baldó (UO295497) 
+    SEW - 3er curso del Grado en Ingeniería Informática del Software - EII - UNIOVI 
+*/
+/*
+  #354a58;
+  #E7D2CC;
+  #B9B7BD;
+*/
+
+/* Especificidad 0, 0, 1 */
+article {
+  flex: 1 0 calc(25% - 1rem);
+  padding: 1rem; /* Espaciado interno */
+  box-sizing: border-box;
+  max-width: calc(20% - 1rem);
+  aspect-ratio: 1 / 1;
+  margin: 1rem; /* Margen para separación entre tarjetas */
+  border-radius: 0.5rem;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+/* Especificidad 0, 0, 2 */
+article h4,
+article img {
+  width: 100%;
+  height: 100%;
+  position: absolute; /* Superpone el título y la imagen */
+  top: 0;
+  left: 0;
+  backface-visibility: hidden; /* Oculta la parte de atrás */
+  border-radius: 0.5rem; /* Bordes redondeados */
+}
+
+/* Especificidad 0, 0, 2 */
+article h4 {
+  margin: 0;
+  text-align: center;
+  font-size: 1.5rem;
+  /* Redefinicion de backface-visibility*/
+  color: #aa0a0af2;
+  /* Definicion de color de primer plano con herencia del color de fondo por h4 */
+  backface-visibility: hidden;
+}
+
+/* Especificidad 0, 1, 1 */
+article:hover {
+  cursor: pointer;
+}
+/* Especificidad 0, 1, 1 */
+article[data-state="flip"] {
+  transform: rotateY(180deg);
+}
+
+/* Especificidad 0, 1, 1 */
+article[data-state="hidden"] {
+  /* Color de fondo definido, heredando el color de primer plano de  article*/
+  background-color: #ccc;
+}
+
+/* Especificidad 0, 0, 2 */
+article img {
+  transform: rotateY(180deg);
+}
+
+/* Especificidad 0, 1, 2 */
+article[data-state="flip"] img {
+  backface-visibility: visible;
+}
+
+/* Especificidad 0, 0, 1 */
+section {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no hay espacio */
+  justify-content: center; /* Centra los elementos en la sección */
+  margin: 2rem 0;
+}
+
+/* Especificidad 0, 0, 2 */
+section > h3 {
+  flex: 0 0 100%; /* El encabezado ocupa toda la fila */
+  text-align: center;
+}

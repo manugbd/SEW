@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<circuito xmlns="http://www.uniovi.es" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.uniovi.es circuito.xsd">
+    <nombre>Circuit de Barcelona-Catalunya</nombre>
+    <ubicacion>
+        <pais>España</pais>
+        <region>Barcelona</region>
+        <localidad>Montmeló</localidad>
+    </ubicacion>
+    <longitudCircuito unidades="metros">4627</longitudCircuito>
+    <anchuraMedia unidades="metros">12</anchuraMedia>
+    <carrera>
+        <fecha>2024-06-23</fecha>
+        <hora>15:00:00</hora>
+        <numeroVueltas>66</numeroVueltas>
+    </carrera>
+    <coordenadaslineaInicio>
+        <longitud>41.570027</longitud>
+        <latitud>2.261210</latitud>
+        <altitud unidades="metros">120</altitud>
+    </coordenadaslineaInicio>
+    <sectores>
+        <numeroSectores>3</numeroSectores>
+        <sector name="Sector 1">
+            <tramo name="Recta salida" distancia="675.99">
+                <coordenadasPtoFinal longitud="2.256657035827436" latitud="41.56560753823936"
+                    altitud="117.65" />
+            </tramo>
+            <tramo name="Curva 1: ELF" distancia="92">
+                <coordenadasPtoFinal longitud="2.255720504698568" latitud="41.56478379312897"
+                    altitud="112.63" />
+            </tramo>
+            <tramo name="Curva 2: Sin nombre" distancia="110">
+                <coordenadasPtoFinal longitud="2.253974779890378" latitud="41.5649371832321"
+                    altitud="129.6745348478264" />
+            </tramo>
+            <tramo name="Curva 3: Curvón o Renault" distancia="443">
+                <coordenadasPtoFinal longitud="2.252788019233611" latitud="41.56681947519315"
+                    altitud="120" />
+            </tramo>
+            <tramo name="Recta entre Curva 3 y Curva 4" distancia="188">
+                <coordenadasPtoFinal longitud="2.253678210721495" latitud="41.56789048988144"
+                    altitud="130.6" />
+            </tramo>
+            <tramo name="Curva 4: Repsol" distancia="260">
+                <coordenadasPtoFinal longitud="2.254634009032372" latitud="41.56679382520867"
+                    altitud="131.24" />
+            </tramo>
+        </sector>
+
+        <sector name="Sector 2">
+            <tramo name="Recta entre Curva 4 y Curva 5" distancia="155">
+                <coordenadasPtoFinal longitud="2.254049478037765" latitud="41.56596077664489"
+                    altitud="129.34" />
+            </tramo>
+            <tramo name="Curva 5: Seat" distancia="162">
+                <coordenadasPtoFinal longitud="2.255482700448257" latitud="41.5658976944248"
+                    altitud="121.5" />
+            </tramo>
+            <tramo name="Curva 6: Sin nombre" distancia="219">
+                <coordenadasPtoFinal longitud="2.256581411288325" latitud="41.56641985353408"
+                    altitud="118" />
+            </tramo>
+            <tramo name="Curva 7: TV3" distancia="131">
+                <coordenadasPtoFinal longitud="2.257422441478476" latitud="41.56785976347653"
+                    altitud="118.2" />
+            </tramo>
+            <tramo name="Curva 8: La Moreneta" distancia="70">
+                <coordenadasPtoFinal longitud="2.256675369199357" latitud="41.56843592899713"
+                    altitud="123" />
+            </tramo>
+        </sector>
+
+        <sector name="Sector 3">
+            <tramo name="Recta entre Curva 8 y Curva 9" distancia="135">
+                <coordenadasPtoFinal longitud="2.2560200713662" latitud="41.56956249008734"
+                    altitud="132" />
+            </tramo>
+            <tramo name="Curva 9: Campsa" distancia="203">
+                <coordenadasPtoFinal longitud="2.256195165213981" latitud="41.57031557934533"
+                    altitud="135" />
+            </tramo>
+            <tramo name="Recta entre Curva 9 y Curva 10" distancia="410">
+                <coordenadasPtoFinal longitud="2.261493572935906" latitud="41.57233223549515"
+                    altitud="136.72" />
+            </tramo>
+            <tramo name="Curva 10: La Caixa" distancia="180">
+                <coordenadasPtoFinal longitud="2.25997588760066" latitud="41.5730477137206"
+                    altitud="136.2" />
+            </tramo>
+            <tramo name="Curva 12: Sin nombre" distancia="243">
+                <coordenadasPtoFinal longitud="2.259550125794869" latitud="41.5739005557263"
+                    altitud="141" />
+            </tramo>
+            <tramo name="Curva 13: Europcar" distancia="165">
+                <coordenadasPtoFinal longitud="2.261081981256088" latitud="41.57446405418242"
+                    altitud="135" />
+            </tramo>
+            <tramo name="Curva 14" distancia="85">
+                <coordenadasPtoFinal longitud="2.261826604626271" latitud="41.57395386895029"
+                    altitud="130" />
+            </tramo>
+            <tramo name="Curva 15" distancia="69">
+                <coordenadasPtoFinal longitud="2.262667362448894" latitud="41.57395386895029"
+                    altitud="130" />
+            </tramo>
+            <tramo name="Curva 16: Catalunya" distancia="178">
+                <coordenadasPtoFinal longitud="2.26275833210686" latitud="41.57375754337389"
+                    altitud="129.58" />
+            </tramo>
+            <tramo name="Recta entre Curva 16 y la línea de salida" distancia="350">
+                <coordenadasPtoFinal longitud="2.260925191252647" latitud="41.56998207135143"
+                    altitud="129.27" />
+            </tramo>
+        </sector>
+    </sectores>
+
+    <galeria>
+        <imagen>ImagenAereaCircuito.png</imagen>
+        <imagen>PlanoDetallanoCircuito.png</imagen>
+        <imagen>SalidaF1Circuito.jpg</imagen>
+    </galeria>
+    <bibliografia>
+        <referencia>https://es.wikipedia.org/wiki/Circuito_de_Barcelona-Catalu%C3%B1a</referencia>
+        <referencia>
+            https://earth.google.com/web/search/Montmelo/@41.57001931,2.26120062,119.89421991a,24.99806362d,35y,0h,0t,0r/data=CiwiJgokCalb1Bzq8kVAEZf9oS4ZeEVAGeqgc0K5CBTAIS5yoxQODxnAQgIIAToDCgEwSg0I____________ARAA</referencia>
+        <referencia>https://www.marca.com/motor/formula1/calendario.html</referencia>
+        <referencia>
+            https://www.elmundo.es/deportes/formula-1/2023/06/02/64799a1721efa09d598b4576.html</referencia>
+    </bibliografia>
+</circuito>

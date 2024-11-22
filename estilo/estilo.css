@@ -1,0 +1,209 @@
+/* 
+    Documento creado por Manuel García Baldó (UO295497) 
+    SEW - 3er curso del Grado en Ingeniería Informática del Software - EII - UNIOVI 
+*/
+/*
+  #354a58;
+  #E7D2CC;
+  #B9B7BD;
+*/
+
+/* Especificidad 0, 0, 1 */
+body {
+  background-color: #968e8011;
+  color: #333333;
+  font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+  font-size: 1em;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.5rem;
+  text-align: justify;
+}
+
+/* Especificidad 0, 0, 1 */
+p {
+  color: #333333;
+  /* background-color definido por la herencia de body */
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2.5ex;
+  text-align: justify;
+  line-height: 2rem;
+}
+
+/* Especificidad 0, 0, 1 */
+h2 {
+  color: #203543;
+  /* background-color definido por la herencia de body */
+  font-size: 6ex;
+  font-family: Georgia, serif;
+  text-align: initial;
+}
+
+/* Especificidad 0, 0, 1 */
+h3 {
+  color: #aa0a0af2;
+  /* background-color definido por la herencia de body */
+  font-size: 4ex;
+  line-height: 2ch;
+  font-family: Georgia, serif;
+  text-align: initial;
+}
+
+/* Especificidad 0, 0, 1 */
+h4 {
+  color: #aa0a0af2;
+  /* background-color definido por la herencia de body */
+  font-size: 3ex;
+  line-height: 2ch;
+  font-family: Georgia, serif;
+}
+
+/* Especificidad 0, 1, 1 */
+a:hover {
+  color: rgba(37, 159, 200, 0.889);
+  /* background-color definido por la herencia de body */
+  text-decoration: none;
+  font-style: italic;
+}
+
+/* Especificidad 0, 0, 1 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+  text-align: center;
+  background-color: #f9f9f9;
+  /* background-color definido , color de letra por la herencia de body */
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+  max-width: 100%; /* Se ajusta al tamaño del contenedor si es pequeño */
+}
+
+/* Especificidad 0, 0, 1 */
+caption {
+  max-width: 100%; /* Se ajusta al tamaño del contenedor si es pequeño */
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+  /* background-color definido por la herencia de body */
+}
+
+/* Especificidad 0, 0, 1 */
+th {
+  background-color: #444444ed;
+  color: #fff;
+  padding: 2vh 2vw;
+}
+
+/* Especificidad 0, 0, 1 */
+td {
+  padding: 2vh 2vw;
+  border: 0.1rem solid #ddd;
+  color: #555;
+  /* background-color definido por la herencia de body */
+}
+
+/* Especificidad 0, 0, 1 */
+th,
+td {
+  /*Redefinicion de border-right-width|color|style*/
+  border-right: 0.1rem solid #ddd;
+  /*Redefinicion de border-botttom-width|color|style*/
+  border-bottom: 0.1rem solid #ddd;
+}
+
+/* Especificidad 0, 1, 1 */
+th:last-child,
+td:last-child {
+  border-right: none;
+}
+
+/* Especificidad 0, 0, 1 */
+ul {
+  color: #143412;
+  /* background-color definido por la herencia de body */
+  line-height: 100%;
+}
+
+/* Especificidad 0, 0, 1 */
+ol {
+  color: #554122;
+  /* background-color definido por la herencia de body */
+}
+
+/* Especificidad 0, 0, 1 */
+dt {
+  line-height: 3cap;
+  font-size: 2cap;
+  font-style: italic;
+}
+
+/* Especificidad 0, 1, 1 */
+dt:hover {
+  color: rgba(200, 170, 37, 0.889);
+  /* background-color definido por la herencia de body */
+  font-size: 3ch;
+  font-style: italic;
+  text-decoration: none;
+}
+
+/* Especificidad 0, 0, 1 */
+video {
+  display: block;
+  margin: 1em auto; /* Centra el video horizontalmente */
+  /*width: 100%; Aunque sea sugerencia, al ser un reel no tiene sentido*/
+  height: 100%;
+  width: auto;
+}
+
+/* Especificidad 0, 1, 1 */
+video:hover {
+  box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.3); /* Aumenta la sombra al pasar el ratón */
+}
+
+/* Especificidad 0, 0, 1 */
+aside {
+  background-color: #90898952;
+  /* background-color definido, color definicido por la herencia de body */
+  border-radius: 1%;
+  width: 90%;
+  padding: 0vh 5vw 1vh 5vw;
+}
+
+/* 
+Estilo directo para el div del mapa 
+*/
+
+/* Especificidad 1, 0, 0 */
+#mapa, 
+/* Especificidad 0, 0, 4 */
+main > section > article > img {
+  width: 100%;
+  margin: 0.2rem auto;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.8rem;
+  box-shadow: 0.2rem 0.2rem rgba(0, 0, 0, 0.4);
+  background-color: #eaeaea;
+}
+
+/* Especificidad 1, 0, 0 */
+#mapa {
+  height: 30vh;
+}
+
+/* Especificidad 0, 0, 4 */
+main > section > article > img {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  /* Especificidad 1, 0, 0 */
+  #mapa {
+    height: 30vh;
+  }
+
+  main > section > article > img {
+    width: 80%;
+  }
+}
