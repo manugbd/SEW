@@ -11,16 +11,8 @@ class Viajes {
         (error) => this.handleError(error)
       );
     } else {
-      alert("La geolocalización no es soportada por este navegador.");
+      document.write("La geolocalización no es soportada por este navegador.");
     }
-
-    // this.setupFileUpload();
-  }
-
-  setupFileUpload() {
-    $("input[type='file']").on("change", (event) =>
-      this.handleFileUpload(event)
-    );
   }
 
   // Método para manejar errores de geolocalización
@@ -40,7 +32,7 @@ class Viajes {
         message += "Ocurrió un error desconocido.";
         break;
     }
-    alert(message);
+    document.write(message);
   }
 
   // Método para almacenar la posición en los atributos
@@ -58,7 +50,7 @@ class Viajes {
       return;
     }
 
-    const article = $("main > section > article").eq(1);
+    const article = $("main > article");
     const mapContainer = $('<div id="mapa"></div>');
 
     article.append(mapContainer);
@@ -110,7 +102,7 @@ class Viajes {
       .attr("src", mapUrl)
       .attr("alt", "Mapa estático de Mapbox en función de tu ubicación");
 
-    const article = $("main > section > article").eq(1);
+    const article = $("main > article");
     if (article.length > 0) {
       article.append(mapImage);
     } else {
@@ -119,7 +111,7 @@ class Viajes {
   }
 
   displayPosition() {
-    const locationSection = document.querySelector("main > section");
+    const locationSection = document.querySelector("main");
     let content = `
       <h4>Datos de ubicación</h4>
       <p><strong>Latitud:</strong> ${this.latitude} grados</p>
@@ -138,67 +130,6 @@ class Viajes {
       }</p>
     `;
     locationSection.innerHTML = content;
-  }
-
-  handleFileUpload(event) {
-    const file = event.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onload = (e) => {
-        const xmlContent = e.target.result;
-        this.processXML(xmlContent);
-      };
-
-      reader.readAsText(file);
-    } else {
-      alert("No se seleccionó ningún archivo.");
-    }
-  }
-
-  processXML(xmlString) {
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(xmlString, "application/kml");
-
-    if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
-      alert("Error al analizar el archivo XML. Verifica su formato.");
-      return;
-    }
-
-    const htmlContent = this.convertXMLtoHTML(xmlDoc);
-    this.displayXMLResult(htmlContent);
-  }
-
-  convertXMLtoHTML(xmlDoc) {
-    let html = "<ul>";
-
-    function processNode(node) {
-      html += `<li><strong>${node.nodeName}</strong>: ${
-        node.textContent.trim() || "Sin contenido"
-      }`;
-      const children = node.children;
-
-      if (children.length > 0) {
-        html += "<ul>";
-        for (let i = 0; i < children.length; i++) {
-          processNode(children[i]);
-        }
-        html += "</ul>";
-      }
-
-      html += "</li>";
-    }
-
-    const root = xmlDoc.documentElement;
-    processNode(root);
-
-    html += "</ul>";
-    return html;
-  }
-
-  displayXMLResult(htmlContent) {
-    $("main > section > article").eq(0).html(htmlContent);
   }
 }
 

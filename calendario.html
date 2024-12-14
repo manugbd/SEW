@@ -10,10 +10,10 @@
 
     <meta charset="UTF-8" />
     <meta name="author" content="Manuel García Baldó (UO295497)" />
-    <meta name="description" content=" descripcion ........" />
+    <meta name="description" content="Pagina encargada de mostrar el calendario de carreras de la F1" />
     <meta
       name="keywords"
-      content="aquí cada documento debe tener la lista de las palabras clave del mismo separadas por comas"
+      content="F1, carreras, coches, calendario, dias, horarios, pilotos, eventos"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -21,6 +21,8 @@
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
     <link rel="stylesheet" type="text/css" href="estilo/agenda_grid.css" />
     <link rel="icon" href="multimedia/imagenes/favicon.ico" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/agenda.js"></script>
   </head>
 
   <body>
@@ -54,15 +56,26 @@
     </p>
 
     <main>
-      <section>
-        <h2>Calendario</h2>
-        <!-- Botón para cargar las carreras -->
-        <button>Cargar Carreras de la Temporada 2024</button>
-        <!-- Aquí se insertarán las carreras -->
-      </section>
+      <h2>Calendario</h2>
+      <!-- Botón para cargar las carreras -->
+      <button>Cargar las carreras de esta temporada</button>
+      <!--Info de JS-->
     </main>
 
-    <footer>En desarrollo</footer>
-    <script src="./js/agenda.js"></script>
+    <footer>
+      <p>
+        Trabajo realizado por <strong>Manuel García Baldó</strong>, estudiante
+        de la
+        <a
+          href="https://eii.uniovi.es/"
+          target="_blank"
+          title="Enlace a la web oficial de la EII"
+          >Escuela de Ingeniería Informática</a
+        >
+      </p>
+      <p>  
+      Grado en Ingeniería Informática del Software. © 2024
+      </p>
+    </footer>
   </body>
 </html>

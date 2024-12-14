@@ -2,7 +2,6 @@
 
 <!-- Documento creado por Manuel García Baldó (UO295497) -->
 <!-- SEW - 3er curso del Grado en Ingeniería Informática del Software - EII - UNIOVI -->
-
 <html lang="es">
   <head>
     <!-- Datos que describen el documento -->
@@ -16,15 +15,33 @@
     />
     <meta
       name="keywords"
-      content="Fórmula 1, F1, noticias, pilotos, calendario, circuitos, juegos, reflejos, reaccion, equipos, deportes"
+      content="Fórmula 1, F1, reaccion, pilotos, calendario, circuitos, meteorología, juegos, reflejos, reaccion, equipos, deportes"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/semaforo.css" />
     <link rel="icon" href="multimedia/imagenes/favicon.ico" />
-    <script src="./js/api.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
+
+  <?php
+  class Record {
+      private $server;
+      private $user;
+      private $pass;
+      private $dbname;
+
+      // Constructor sin parámetros
+      public function __construct() {
+          $this->server = "localhost";
+          $this->user = "DBUSER2024";
+          $this->pass = "DBPSWD2024";
+          $this->dbname = "records";
+      }
+  }
+  ?>
 
   <body>
     <header>
@@ -52,7 +69,7 @@
     <p>
       Estás en: <a href="index.html" title="Inicio">Inicio</a> >>
       <a href="juegos.html" title="Enlace al apartado de juegos">Juegos</a> >>
-      APIs
+      Semaforo
     </p>
 
     <main>
@@ -64,32 +81,8 @@
       </nav>
 
       <section>
-        <h3>F1 Stats: Uso de APIs File, Canvas y SVG</h3>
-
-        <!-- Descripción del uso de la aplicación -->
-        <p>
-          Esta herramienta permite cargar un archivo de texto con datos de
-          pilotos de F1 y generar un gráfico de barras. El archivo debe tener el
-          formato:
-        </p>
-        <pre>Nombre,Posición,Carrera
-Pilot1,1,Grand Prix 1
-Pilot2,2,Grand Prix 2
-...</pre>
-        <p>
-          Después de cargar el archivo, el gráfico se mostrará en el canvas, y
-          podrás descargarlo como un archivo SVG haciendo clic en el botón
-          correspondiente.
-        </p>
-
-        <!-- Input para subir archivo -->
-        <input type="file" accept=".txt" />
-
-        <!-- Canvas para generar el gráfico de barras -->
-        <canvas width="600" height="400"></canvas>
-
-        <!-- Botón para descargar el gráfico como SVG -->
-        <button id="downloadButton" disabled>Descargar Gráfico SVG</button>
+        <h3>Juego del Semaforo</h3>
+        <!-- Aquí se genera JavaScript -->
       </section>
     </main>
 
@@ -104,9 +97,11 @@ Pilot2,2,Grand Prix 2
           >Escuela de Ingeniería Informática</a
         >
       </p>
-      <p>Grado en Ingeniería Informática del Software. © 2024</p>
+      <p>  
+      Grado en Ingeniería Informática del Software. © 2024
+      </p>
     </footer>
 
-    <script src="./js/api.js"></script>
+    <script src="./js/semaforo.js"></script>
   </body>
 </html>

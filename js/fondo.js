@@ -32,6 +32,9 @@ class Fondo {
   }
 
   establecerFondo(urlImagen) {
+    /* 
+      CSS dentro de HTML permitido por los profesores 
+    */
     $("body").css({
       "background-image": `url("${urlImagen}")`,
       "background-size": "cover",

@@ -9,8 +9,43 @@
 */
 
 /* Especificidad 0, 0, 1 */
+section {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no hay espacio */
+  justify-content: center; /* Centra los elementos en la sección */
+  width: 50%;
+
+  margin: 0 auto; /* Centrar horizontalmente */
+  align-items: center; /* Centrado vertical de elementos */
+  transition: width 0.5s ease
+}
+
+/**
+  LOS SIGUIENTES @media:
+  - Especificidad 0, 0, 1 --> Section
+  - Redefinición de width con respecto a section
+*/
+@media (max-width: 1500px ) {section{width: 60%;  }}
+
+@media (max-width: 1200px ) {section{width: 70%; }}
+
+@media (max-width: 1000px ) {section{width: 80%; }}
+
+@media (max-width: 800px ) {section{width: 90%; }}
+
+@media (max-width: 600px ) {section{width: 100%; }}
+
+/* Especificidad 0, 0, 2 */
+section > h3 {
+  flex: 0 0 100%; /* El encabezado ocupa toda la fila */
+  text-align: center;
+}
+
+/* Especificidad 0, 0, 1 */
 article {
-  flex: 1 0 calc(25% - 1rem);
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: calc(25% - 1rem);
   padding: 1rem; /* Espaciado interno */
   box-sizing: border-box;
   max-width: calc(20% - 1rem);
@@ -29,6 +64,7 @@ article img {
   position: absolute; /* Superpone el título y la imagen */
   top: 0;
   left: 0;
+  /* Redefinicion de backface-visibility*/
   backface-visibility: hidden; /* Oculta la parte de atrás */
   border-radius: 0.5rem; /* Bordes redondeados */
 }
@@ -36,7 +72,10 @@ article img {
 @media (max-width: 450px) {
   /* Especificidad 0, 0, 1 */
   article {
-    flex: 1 0 calc(33.33% - 1rem);
+    /* Redefinición de flex y de max-width */
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: calc(33.33% - 1rem);
     max-width: calc(33.33% - 1rem);
   }
   article h4 {
@@ -49,10 +88,8 @@ article h4 {
   margin: 0;
   text-align: center;
   font-size: 100%;
-  /* Redefinicion de backface-visibility*/
   color: #aa0a0af2;
-  /* Definicion de color de primer plano con herencia del color de fondo por h4 */
-  backface-visibility: hidden;
+  /* Definicion de color de primer plano con herencia del color de fondo de body */
 }
 
 /* Especificidad 0, 1, 1 */
@@ -77,19 +114,8 @@ article img {
 
 /* Especificidad 0, 1, 2 */
 article[data-state="flip"] img {
+  width: 100%;
   backface-visibility: visible;
 }
 
-/* Especificidad 0, 0, 1 */
-section {
-  display: flex;
-  flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no hay espacio */
-  justify-content: center; /* Centra los elementos en la sección */
-  margin: 2rem 0;
-}
 
-/* Especificidad 0, 0, 2 */
-section > h3 {
-  flex: 0 0 100%; /* El encabezado ocupa toda la fila */
-  text-align: center;
-}

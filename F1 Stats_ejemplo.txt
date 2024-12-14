@@ -1,0 +1,10 @@
+Hamilton,10,Silverstone
+Verstappen,20,Monaco
+Leclerc,3,Spa
+Alonso,4,Suzuka
+Perez,5,Interlagos
+Russell,6,Imola
+Norris,7,Baku
+Sainz,8,Monza
+
+

@@ -1,4 +1,6 @@
 // Version 1.0 24/10/2024
+// Version 2.0 4/12/2024
+// Version 2.1 14/12/2024
 
 class Pais {
   constructor(nombrePais, nombreCapital, poblacion) {
@@ -52,11 +54,23 @@ class Pais {
     return `Coordenadas de la línea de meta: Latitud: ${this.coordenadaLineaDeSalida.latitud}, Longitud: ${this.coordenadaLineaDeSalida.longitud}, Altitud: ${this.coordenadaLineaDeSalida.altitud} metros`;
   }
 
+  /**
+   * DE AQUI EN ADELANTE ESTA PERMITIDO JQUERY
+   */
+
   obtenerPrevisionTiempo() {
     const apiKey = "5016c96475697f23594ae4242e0e50a5";
-    const lat = this.coordenadaLineaDeSalida.latitud;
-    const lon = this.coordenadaLineaDeSalida.longitud;
-    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&lang=es&cnt=5&mode=xml&appid=${apiKey}`;
+    let lat = this.coordenadaLineaDeSalida.latitud;
+    let lon = this.coordenadaLineaDeSalida.longitud;
+
+    let units = "metric";
+    let lang = "es";
+    let mode = "xml";
+
+    let nDays = 5;
+    let nHoursPerPrevision = 3;
+    let cnt = nDays * nHoursPerPrevision;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&lang=${lang}&cnt=${cnt}&mode=${mode}&appid=${apiKey}`;
 
     $.ajax({
       url: url,
@@ -70,34 +84,68 @@ class Pais {
     });
   }
 
+  /**
+   * Mostrar la previsión del tiempo en el HTML
+   * @param {Object} data - Los datos de la previsión meteorológica en formato XML
+   */
   mostrarPrevisionTiempo(data) {
     const forecast = $(data).find("time");
-    let forecastHtml = "<h3>Previsión del tiempo en la línea de meta:</h3><ul>";
 
+    // Creamos el contenedor <section>
+    let sectionHtml = "<section>";
+    // Le ponemos el titulo
+    let titleHtml = "<h3>Previsión del tiempo para los proximos días:</h3>";
+    sectionHtml += titleHtml;
+
+    // Iteramos sobre cada día de la previsión
     forecast.each(function () {
       const fecha = $(this).attr("from");
-      const temperatura = $(this).find("temperature").attr("value");
+      const temperaturaMaxima = $(this).find("temperature").attr("value");
+      const temperaturaMinima = $(this).find("temperature").attr("min");
+      const humedad = $(this).find("humidity").attr("value");
       const descripcion = $(this).find("symbol").attr("name");
+      const icono = $(this).find("symbol").attr("var");
 
-      forecastHtml += `
-            <li><strong>${fecha}</strong>: ${temperatura}°C, ${descripcion}</li>
-          `;
+      let fechaLegible = new Date(fecha);
+      const diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+      fechaLegible = `${diasSemana[fechaLegible.getDay()]} - ${fechaLegible.getDate()} || ${fechaLegible.getHours()}:00 horas`;
+
+      // Creamos un artículo para cada día
+      let articleHtml = `
+        <article>
+          <h4>${fechaLegible}</h4>
+          <p><strong>Temperatura máxima:</strong> ${temperaturaMaxima}°C</p>
+          <p><strong>Temperatura mínima:</strong> ${temperaturaMinima}°C</p>
+          <p><strong>Humedad:</strong> ${humedad}%</p>
+          <p><strong>Estado del cielo:</strong> ${descripcion}</p>
+          <img src="http://openweathermap.org/img/w/${icono}.png" alt="${descripcion}">
+        </article>
+      `;
+
+      // Añadimos el artículo al contenedor <section>
+      sectionHtml += articleHtml;
     });
 
-    forecastHtml += "</ul>";
+    sectionHtml += "</section>";
 
-    // Inserta la previsión directamente en el contenido de la página
-    $("main > section").append(forecastHtml); // Aquí se añade la previsión dentro del contenido principal
+    // Insertamos el <section> con los artículos dentro del HTML
+    $("main > section").append(sectionHtml);
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const pais = new Pais("España", "Madrid", 47350000);
-  pais.rellenarInfo(
-    "Montmeló",
-    "Partitocracia",
-    { latitud: 41.574, longitud: 2.261, altitud: 0 },
+  let españa = new Pais("España", "Madrid", 48797875);
+  españa.rellenarInfo(
+    "Circuit de Barcelona-Catalunya",
+    "Monarquía parlamentaria",
+    { latitud: 41.570027, longitud: 2.26121, altitud: 120 },
     "Catolicismo"
   );
-  pais.obtenerPrevisionTiempo();
+
+  const infoSecundaria = españa.obtenerInfoSecundaria();
+  const coordenadas = españa.obtenerCoordenadasLineaSalida();
+
+  document.querySelector("section").innerHTML += infoSecundaria + coordenadas;
+
+  españa.obtenerPrevisionTiempo();
 });

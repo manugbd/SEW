@@ -10,16 +10,27 @@
 
     <meta charset="UTF-8" />
     <meta name="author" content="Manuel García Baldó (UO295497)" />
-    <meta name="description" content="descripcion ........" />
+    <meta
+      name="description"
+      content="Pagina con informacion relevante sobre el circuito."
+    />
     <meta
       name="keywords"
-      content="aquí cada documento debe tener la lista de las palabras clave del mismo separadas por comas"
+      content="F1, coche, carrera, piloto, velocidad, circuito, puntos"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/layout.css" />
     <link rel="icon" href="multimedia/imagenes/favicon.ico" />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
+    <script src="https://unpkg.com/kml-to-geojson"></script>
+    <script src="./js/circuito.js"></script>
   </head>
 
   <body>
@@ -51,8 +62,31 @@
 
     <main>
       <h2>Circuito</h2>
+      <section>
+        <h4>Indique el archivo SVG a cargar:</h4>
+        <input type="file" accept=".svg" aria-label="Cargar archivos svg" />
+        <!-- Contenido de JS -->
+      </section>
+      <article>
+        <h4>Indique el archivo XML o KML a cargar:</h4>
+        <input type="file" accept=".xml,.kml" multiple aria-label="Cargar
+        archivos XML o KML" />
+        <!-- Contenido de JS -->
+      </article>
     </main>
 
-    <footer>En desarrollo</footer>
+    <footer>
+      <p>
+        Trabajo realizado por <strong>Manuel García Baldó</strong>, estudiante
+        de la
+        <a
+          href="https://eii.uniovi.es/"
+          target="_blank"
+          title="Enlace a la web oficial de la EII"
+          >Escuela de Ingeniería Informática</a
+        >
+      </p>
+      <p>Grado en Ingeniería Informática del Software. © 2024</p>
+    </footer>
   </body>
 </html>

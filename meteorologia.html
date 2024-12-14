@@ -10,10 +10,13 @@
 
     <meta charset="UTF-8" />
     <meta name="author" content="Manuel García Baldó (UO295497)" />
-    <meta name="description" content=" descripcion ........" />
+    <meta
+      name="description"
+      content="Pagina que contiene datos de relevancia sobre el circuito, incluyendo el tiempo de los proximos 5 días"
+    />
     <meta
       name="keywords"
-      content="aquí cada documento debe tener la lista de las palabras clave del mismo separadas por comas"
+      content="F1, coches, datos, circuito, meteorología, españa, automoviles"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -21,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="estilo/article_elements.css" />
     <link rel="icon" href="multimedia/imagenes/favicon.ico" />
-    <script src="87-jQuery-AJAX-XML-meteo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/pais.js"></script>
   </head>
 
@@ -56,28 +59,25 @@
     </p>
 
     <main>
+      <h2>Meteorología</h2>
       <section>
-        <h2>Meteorología</h2>
-        <script>
-          let españa = new Pais("España", "Madrid", 48797875);
-          españa.rellenarInfo(
-            "Circuit de Barcelona-Catalunya",
-            "Monarquía parlamentaria",
-            { latitud: 2.26121, longitud: 41.570027, altitud: 120 },
-            "Catolicismo"
-          );
-
-          const infoSecundaria = españa.obtenerInfoSecundaria();
-          const coordenadas = españa.obtenerCoordenadasLineaSalida();
-
-          document.querySelector("section").innerHTML +=
-            infoSecundaria + coordenadas;
-
-          españa.obtenerPrevisionTiempo();
-        </script>
+        <h4>Datos Relevantes sobre el circuito</h4>
+        <!--Info de JS-->
       </section>
     </main>
 
-    <footer>En desarrollo</footer>
+    <footer>
+      <p>
+        Trabajo realizado por <strong>Manuel García Baldó</strong>, estudiante
+        de la
+        <a
+          href="https://eii.uniovi.es/"
+          target="_blank"
+          title="Enlace a la web oficial de la EII"
+          >Escuela de Ingeniería Informática</a
+        >
+      </p>
+      <p>Grado en Ingeniería Informática del Software. © 2024</p>
+    </footer>
   </body>
 </html>

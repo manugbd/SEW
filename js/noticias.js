@@ -8,6 +8,7 @@ class Noticias {
     }
 
     this.newsArray = [];
+    this.createSectionStructure();
     this.insertAddNewsArticle();
   }
 
@@ -32,6 +33,7 @@ class Noticias {
 
   addNews(content) {
     this.removeAllArticles();
+    this.insertTitle();
     const lines = content.split("\n");
 
     lines.forEach((line) => {
@@ -75,6 +77,20 @@ class Noticias {
   addArticle(article) {
     const newsSection = document.querySelector("main > section > section");
     newsSection.appendChild(article);
+  }
+
+  createSectionStructure(){
+      const news = document.querySelector("main > section");
+      const titleElement = document.createElement("section");
+      news.appendChild(titleElement);
+      this.insertTitle();
+  }
+
+  insertTitle(){
+    const news = document.querySelector("main > section > section");
+    const titleElement = document.createElement("h3");
+    titleElement.textContent = "Últimas noticias";
+    news.appendChild(titleElement);
   }
 
   insertAddNewsArticle() {
@@ -135,7 +151,6 @@ class Noticias {
     titleInput.value = "";
     introInput.value = "";
     authorInput.value = "";
-
     this.insertAddNewsArticle();
   }
 }

@@ -64,6 +64,28 @@ class Memoria {
     this.shuffleElements();
     this.createElements();
     this.addEventListeners();
+    this.insertHelp();
+  }
+
+  insertHelp() {
+    const section = document.querySelector("main");
+
+    const ayudaHTML = `
+    <section>
+      <h4>Cómo jugar al juego de memoria</h4>
+      <p>En este juego de memoria tienes <strong>8 cartas</strong> barajadas y colocadas boca abajo. Hay <strong>4 imágenes distintas</strong>, cada una con una pareja idéntica.</p>
+      <p><strong>Reglas del juego:</strong></p>
+      <ul>
+        <li>Levanta dos cartas para darles la vuelta y revelar las imágenes.</li>
+        <li>Si las imágenes <strong>coinciden</strong>, las cartas quedarán visibles.</li>
+        <li>Si no coinciden, las cartas volverán a ponerse boca abajo.</li>
+      </ul>
+      <p>Ganas cuando logras encontrar y dar la vuelta a todas las cartas, emparejándolas correctamente.</p>
+    </section>
+  `;
+
+    // Agregar el contenido al final del elemento <main>
+    section.insertAdjacentHTML("beforeend", ayudaHTML);
   }
 
   /*

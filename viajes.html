@@ -10,10 +10,10 @@
 
     <meta charset="UTF-8" />
     <meta name="author" content="Manuel García Baldó (UO295497)" />
-    <meta name="description" content="descripcion ........" />
+    <meta name="description" content="Pagina encargada de mostrar informacion relevante al usuario, sobre la geografia. Incluye mapas en funcion de la ubicacion o altimetrias." />
     <meta
       name="keywords"
-      content="aquí cada documento debe tener la lista de las palabras clave del mismo separadas por comas"
+      content="F1, coche, carrera, piloto, velocidad, mapa, ubicacion, altimetria"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -27,7 +27,7 @@
       rel="stylesheet"
     />
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-    <script src="js/viajes.js"></script>
+    <script src="./js/viajes.js"></script>
   </head>
 
   <body>
@@ -61,20 +61,27 @@
     <p>Estás en: <a href="index.html" title="Inicio">Inicio</a> >> Viajes</p>
 
     <main>
-      <section>
         <h2>Viajes</h2>
-        <article>
-          <h4>Sube tu archivo XML</h4>
-          <form id="form-cargar-xml">
-            <label for="archivo-xml">Cargar archivo XML:</label>
-            <input type="file" id="archivo-kml" accept=".kml" />
-          </form>
-        </article>
         <article><h4>Mapa de tu ubicación</h4></article>
-      </section>
+        
     </main>
 
-    <footer>En desarrollo</footer>
+    <footer>
+      <p>
+        Trabajo realizado por <strong>Manuel García Baldó</strong>, estudiante
+        de la
+        <a
+          href="https://eii.uniovi.es/"
+          target="_blank"
+          title="Enlace a la web oficial de la EII"
+          >Escuela de Ingeniería Informática</a
+        >
+      </p>
+      <p>  
+      Grado en Ingeniería Informática del Software. © 2024
+      </p>
+    </footer>
+
     <script>
       "/js/viajes.js";
     </script>

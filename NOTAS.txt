@@ -1,0 +1,40 @@
+Comprobar los alert
+Comprobar en memoria la doble invocación al js.
+comprobar validacion de viajes.html
+Error: The value of the for attribute of the label element must be the ID of a non-hidden form control.
+
+From line 69, column 13; to line 69, column 37
+
+          <label for="archivo-xml">Cargar
+
+Comprobar la validación de los hmtl una vez cargados
+
+-validado
++pendiente/vacio
+comprobado+
+
+
+CSS:
+
+-agenda_grid
+-articl_elements
+-estilo
+-loyout
+-memoria
++otros
+-semaforo
+
+HTML:
+-api
+-calendario
+-circuito
+-index          +
+-juegos
+-memoria
+-meteorologia
+-noticias       +
+-piloto
+semaforo
+viajes
+
+revisar la descripcion de circuito hmtl

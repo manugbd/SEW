@@ -2,27 +2,47 @@
     Documento creado por Manuel García Baldó (UO295497) 
     SEW - 3er curso del Grado en Ingeniería Informática del Software - EII - UNIOVI 
 */
-/*
-  #354a58;
-  #E7D2CC;
-  #B9B7BD;
-*/
+
+/* Especificidad 0, 1, 0 */
+/* Solo usada para almacenar los colores y no tener codigo repetido*/
+:root {
+  --color-fondo: #968e8011;
+  --color-texto: #333333;
+  --color-primario: #354a58;
+  --color-secundario: #e7d2cc;
+  --color-hover: rgba(37, 159, 200, 0.889);
+  --color-tabla-fondo: #f9f9f9;
+  --color-tabla-borde: #ddd;
+  --color-tabla-header: #444444ed;
+  --color-tabla-header-texto: #fff;
+}
 
 /* Especificidad 0, 0, 1 */
 body {
-  background-color: #968e8011;
-  color: #333333;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
   font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
   font-size: 1em;
   font-style: normal;
   font-variant: normal;
   line-height: 1.5rem;
   text-align: justify;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garantiza que ocupe toda la altura de la ventana */
+  margin: 0; /* Elimina márgenes */
+  padding: auto;
+}
+
+/* Especificidad 0, 0, 1 */
+main {
+  flex: 1;
+  padding: 0em 2em;
 }
 
 /* Especificidad 0, 0, 1 */
 p {
-  color: #333333;
+  color: var(--color-texto);
   /* background-color definido por la herencia de body */
   font-family: "Times New Roman", Times, serif;
   font-size: 2.5ex;
@@ -32,7 +52,7 @@ p {
 
 /* Especificidad 0, 0, 1 */
 h2 {
-  color: #203543;
+  color: var(--color-primario);
   /* background-color definido por la herencia de body */
   font-size: 6ex;
   font-family: Georgia, serif;
@@ -60,7 +80,7 @@ h4 {
 
 /* Especificidad 0, 1, 1 */
 a:hover {
-  color: rgba(37, 159, 200, 0.889);
+  color: var(--color-hover);
   /* background-color definido por la herencia de body */
   text-decoration: none;
   font-style: italic;
@@ -73,7 +93,7 @@ table {
   margin: 2rem 0;
   font-size: 0.9rem;
   text-align: center;
-  background-color: #f9f9f9;
+  background-color: var(--color-tabla-fondo);
   /* background-color definido , color de letra por la herencia de body */
   box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
   max-width: 100%; /* Se ajusta al tamaño del contenedor si es pequeño */
@@ -91,15 +111,15 @@ caption {
 
 /* Especificidad 0, 0, 1 */
 th {
-  background-color: #444444ed;
-  color: #fff;
+  background-color: var(--color-tabla-header);
+  color: var(--color-tabla-header-texto);
   padding: 2vh 2vw;
 }
 
 /* Especificidad 0, 0, 1 */
 td {
   padding: 2vh 2vw;
-  border: 0.1rem solid #ddd;
+  border: 0.1rem solid var(--color-tabla-borde);
   color: #555;
   /* background-color definido por la herencia de body */
 }
@@ -108,9 +128,9 @@ td {
 th,
 td {
   /*Redefinicion de border-right-width|color|style*/
-  border-right: 0.1rem solid #ddd;
+  border-right: 0.1rem solid var(--color-tabla-borde);
   /*Redefinicion de border-botttom-width|color|style*/
-  border-bottom: 0.1rem solid #ddd;
+  border-bottom: 0.1rem solid var(--color-tabla-borde);
 }
 
 /* Especificidad 0, 1, 1 */
@@ -177,8 +197,8 @@ Estilo directo para el div del mapa
 
 /* Especificidad 1, 0, 0 */
 #mapa, 
-/* Especificidad 0, 0, 4 */
-main > section > article > img {
+/* Especificidad 0, 0, 3 */
+main > article > img {
   width: 100%;
   margin: 0.2rem auto;
   border: 0.1rem solid #ccc;
@@ -189,12 +209,12 @@ main > section > article > img {
 
 /* Especificidad 1, 0, 0 */
 #mapa {
-  height: 30vh;
+  height: 40vh;
 }
 
 /* Especificidad 0, 0, 4 */
-main > section > article > img {
-  width: 100%;
+main > article > img {
+  width: 50%;
 }
 
 @media (max-width: 768px) {
@@ -203,7 +223,55 @@ main > section > article > img {
     height: 30vh;
   }
 
-  main > section > article > img {
+  /* Especificidad 0, 0, 3 */
+  main > article > img {
     width: 80%;
   }
+}
+
+/**
+  F1 STATS - Uso de 3 APIS
+**/
+
+/* Especificidad 0, 0, 2 */
+section > input {
+  padding: 1%;
+  margin-bottom: 1%;
+  display: block;
+  font-size: 0.8em;
+  border: 0.1em solid #ccc;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+/* Especificidad 0, 0, 2 */
+section > canvas {
+  height: 40%;
+  display: block;
+  margin: 2em 0;
+  background-color: #ffffff;
+  border: 0.1rem solid #ccc;
+}
+
+/* Especificidad 0, 0, 2 */
+section > button {
+  background-color: #4caf50;
+  color: white;
+  padding: .8rem 2rem;
+  border: none;
+  border-radius: .5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+/* Especificidad 0, 1, 2 */
+section > button:hover {
+  background-color: #45a049;
+}
+
+/* Especificidad 0, 1, 2 */
+section > button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
