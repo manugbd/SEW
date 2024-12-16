@@ -117,7 +117,7 @@ footer {
   background-color: #203543;
   text-align: center;
   padding: 1rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin-top: 2rem;
   border-top: 0.2rem solid #444;
 }
@@ -127,7 +127,7 @@ footer p {
   /*Redefinicion de color principal, heredando el color de fondo de footer*/
   color: #ffffff;
   margin: 0;
-  line-height: 1.5rem;
+  line-height: 1.3rem;
 }
 
 /* Especificidad 0, 0, 2 */
