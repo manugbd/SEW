@@ -48,7 +48,7 @@ nav a.active {
 h1 a {
   color: #ffffff;
   /* background-color definido por la herencia de body */
-  font-size: 5vw;
+  font-size: 5rem;
   font-family: Georgia, serif;
   letter-spacing: 1vw; /* Espacio entre letras */
   text-decoration: none;
