@@ -73,10 +73,12 @@
           pilotos de F1 y generar un gráfico de barras. El archivo debe tener el
           formato:
         </p>
-        <pre>Nombre,Posición,Carrera
+        <pre>
+Nombre,Posición,Carrera
 Pilot1,1,Grand Prix 1
 Pilot2,2,Grand Prix 2
-...</pre>
+...</pre
+        >
         <p>
           Después de cargar el archivo, el gráfico se mostrará en el canvas, y
           podrás descargarlo como un archivo SVG haciendo clic en el botón
@@ -84,7 +86,8 @@ Pilot2,2,Grand Prix 2
         </p>
 
         <!-- Input para subir archivo -->
-        <input type="file" accept=".txt" />
+        <label for="fileInput">Cargar archivo de pilotos de F1:</label>
+        <input type="file" id="fileInput" accept=".txt" />
 
         <!-- Canvas para generar el gráfico de barras -->
         <canvas width="600" height="400"></canvas>
@@ -99,13 +102,12 @@ Pilot2,2,Grand Prix 2
         Trabajo realizado por <strong>Manuel García Baldó</strong>, estudiante
         de la
         <a
-          href="https://ingenieriainformatica.uniovi.es" 
+          href="https://ingenieriainformatica.uniovi.es"
           title="Enlace a la web oficial de la EII"
           >Escuela de Ingeniería Informática</a
         >
       </p>
       <p>Grado en Ingeniería Informática del Software. © 2024</p>
     </footer>
-
   </body>
 </html>

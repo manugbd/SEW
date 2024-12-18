@@ -166,6 +166,10 @@ class Pais {
 
   // Método para mostrar las fotos de Flickr en el carrusel
   mostrarFotosFlickr(data) {
+    if (!data || !data.photos || !data.photos.photo || data.photos.photo.length === 0) {
+      console.log("No se encontraron fotos para este país.");
+      return;
+  }
     const photos = data.photos.photo;
     let images = photos.map((photo) => {
       return `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;

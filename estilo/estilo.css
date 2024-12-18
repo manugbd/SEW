@@ -31,7 +31,6 @@ body {
   flex-direction: column;
   min-height: 100vh; /* Garantiza que ocupe toda la altura de la ventana */
   margin: 0; /* Elimina márgenes */
-  padding: auto;
 }
 
 /* Especificidad 0, 0, 1 */
@@ -128,9 +127,13 @@ td {
 th,
 td {
   /*Redefinicion de border-right-width|color|style*/
-  border-right: 0.1rem solid var(--color-tabla-borde);
+  border-right-width: 0.1rem;
+  border-right-style: solid;
+  border-right-color:var(--color-tabla-borde);
   /*Redefinicion de border-botttom-width|color|style*/
-  border-bottom: 0.1rem solid var(--color-tabla-borde);
+  border-bottom-width: 0.1rem;
+  border-bottom-style: solid;
+  border-bottom-color: var(--color-tabla-borde);
 }
 
 /* Especificidad 0, 1, 1 */
@@ -198,11 +201,12 @@ Estilo directo para el div del mapa
 /* Especificidad 1, 0, 0 */
 #mapa, 
 /* Especificidad 0, 0, 3 */
-main > article > img {
+main > section > img {
   width: 100%;
   margin: 0.2rem auto;
   border: 0.1rem solid #ccc;
   border-radius: 0.8rem;
+  /* background-color definido por la herencia de body x2 */ 
   box-shadow: 0.2rem 0.2rem rgba(0, 0, 0, 0.4);
   background-color: #eaeaea;
 }
@@ -213,18 +217,21 @@ main > article > img {
 }
 
 /* Especificidad 0, 0, 4 */
-main > article > img {
+main > section > img {
+  /* Redefinicion de width con respeto a article */
   width: 50%;
 }
 
 @media (max-width: 768px) {
   /* Especificidad 1, 0, 0 */
   #mapa {
+    /* Redefinicion de height con respeto al de fuera del @media */
     height: 30vh;
   }
 
   /* Especificidad 0, 0, 3 */
-  main > article > img {
+  main > section > img {
+    /* Redefinicion de width con respeto al de fuera del @media */
     width: 80%;
   }
 }
@@ -249,12 +256,14 @@ section > canvas {
   height: 40%;
   display: block;
   margin: 2em 0;
+  /* color de fondo redefinido, color principal definido por la herencia de body*/
   background-color: #ffffff;
   border: 0.1rem solid #ccc;
 }
 
 /* Especificidad 0, 0, 2 */
 section > button {
+  /* color de fondo redefinido, color principal definido por la herencia de body*/
   background-color: #b82615;
   color: white;
   padding: .8rem 2rem;
@@ -262,11 +271,13 @@ section > button {
   border-radius: .5rem;
   cursor: pointer;
   font-size: 1rem;
+  /* color de fondo redefinido, color principal definido por la herencia de body*/
   transition: background-color 0.3s ease;
 }
 
 /* Especificidad 0, 1, 2 */
 section > button:disabled {
+  /* color de fondo redefinido, color principal definido por la herencia de body*/
   background-color: #ccc;
   cursor: not-allowed;
 }
@@ -318,6 +329,7 @@ main>article:first-of-type>button {
   border-radius: 50%;
   z-index: 10;
   cursor: pointer;
+  /* color de fondo redefinido, color principal definido por la herencia de body*/
   background-color: #fff;
   font-size: 1em;
   display: flex;

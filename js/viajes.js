@@ -19,7 +19,7 @@ class Viajes {
   // Método para manejar errores de geolocalización
   handleError(error) {
     let message = "Error al obtener la geolocalización: ";
-    switch (error.code) {
+    switch (error.code) { 
       case error.PERMISSION_DENIED:
         message += "El usuario denegó el permiso para obtener la ubicación.";
         break;
@@ -63,9 +63,9 @@ class Viajes {
       return;
     }
 
-    const section = $("main > section:first-of-type");
+    const section = $("main > section");
     const mapContainer = $(
-      '<h4>Mapa dinamico de tu ubicación </h4> <div id="mapa"></div>'
+      '<article><h4>Mapa dinamico de tu ubicación </h4> <div id="mapa"></div></article>'
     );
 
     section.append(mapContainer);
@@ -113,18 +113,15 @@ class Viajes {
 
     const mapUrl = `${baseUrl}/${center},${zoom}/${width}x${height}?access_token=${apiKey}`;
 
-    const mapImage = $("<img>")
-      .attr("src", mapUrl)
-      .attr("alt", "Mapa estático de Mapbox en función de tu ubicación");
-    const definitionText = $("<h4>Mapa de tu ubicación</h4>");
+    const section = $("main > section");
 
-    const section = $("main > section:first-of-type");
-    if (section.length > 0) {
-      section.append(definitionText);
-      section.append(mapImage);
-    } else {
-      console.error("No se encontró el contenedor donde albergar el mapa.");
-    }
+    let article = `<article>
+      <h4>Mapa de tu ubicación</h4>
+      <img src="${mapUrl}" alt="Mapa estático de Mapbox en función de tu ubicación">
+      </article>`;
+
+    section.append(article);
+    
   }
 
   displayPosition() {
@@ -151,7 +148,7 @@ class Viajes {
   }
 
   displayCarrusel() {
-    const slides = querySelectorAll("main>article:first-of-type>img");
+    const slides = $("main > article:first-of-type > img");
 
     // current slide counter
     let curSlide = 9;
@@ -167,7 +164,7 @@ class Viajes {
       curSlide === maxSlide ? curSlide = 0: curSlide++;
 
       //   move slide by -100%
-      slides.forEach((slide, indx) => {
+      slides.each((slide, indx) => {
         var trans = 100 * (indx - curSlide);
         $(slide).css("transform", "translateX(" + trans + "%)");
       });
@@ -182,7 +179,7 @@ class Viajes {
       curSlide === 0 ? curSlide = maxSlide: curSlide--;
 
       //   move slide by 100%
-      slides.forEach((slide, indx) => {
+      slides.each((slide, indx) => {
         var trans = 100 * (indx - curSlide);
         $(slide).css("transform", "translateX(" + trans + "%)");
       });

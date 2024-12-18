@@ -81,22 +81,23 @@ if (isset($_POST['exportar'])) {
             <h4>Gestión de Campeonatos</h4>
             <p>Para incializar la base de datos (se hace por defecto), puede pulsar el botón.</p>
             <!-- Botón para crear base de datos y tablas -->
+            <!-- Formulario para crear base de datos y tablas -->
             <form method="POST">
                 <button type="submit" name="crear">Crear Base de Datos y Tablas</button>
             </form>
 
-            <p>Para importar un archivo .csv a la base de datos seleccionelo.</p>
             <!-- Formulario para importar CSV -->
             <form method="POST" enctype="multipart/form-data" id="importForm">
-                <input type="file" name="file" accept=".csv"
+                <label for="csvFile">Seleccionar archivo CSV para importar:</label>
+                <input type="file" name="file" id="csvFile" accept=".csv"
                     onchange="document.getElementById('importForm').submit();" />
             </form>
 
-            <p>Para exportar un .csv con el contenido de la base de datos, pulse el botón.</p>
-            <!-- Botón para exportar CSV -->
+            <!-- Formulario para exportar CSV -->
             <form method="POST">
                 <button type="submit" name="exportar">Exportar CSV (Todas las Tablas)</button>
             </form>
+
 
         </section>
     </main>
