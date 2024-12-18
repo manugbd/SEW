@@ -4,7 +4,7 @@ class Noticias {
       console.log("API File soportada");
       this.initEventListeners();
     } else {
-      alert("La API File no es soportada en este navegador.");
+      document.write("La API File no es soportada en este navegador.");
     }
 
     this.newsArray = [];
@@ -142,7 +142,6 @@ class Noticias {
     const author = authorInput.value.trim();
 
     if (!title || !intro || !author) {
-      alert("Por favor, complete todos los campos.");
       return;
     }
 

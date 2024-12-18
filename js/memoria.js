@@ -68,7 +68,7 @@ class Memoria {
   }
 
   insertHelp() {
-    const section = document.querySelector("main");
+    const section = document.querySelector("main>section");
 
     const ayudaHTML = `
     <section>
@@ -149,8 +149,8 @@ class Memoria {
     al método resetBoard.
     */
   disableCards() {
-    this.firstCard.removeEventListener("click", this.flipCard.bind(this));
-    this.secondCard.removeEventListener("click", this.flipCard.bind(this));
+    this.firstCard.setAttribute("data-state", "revealed");
+    this.secondCard.setAttribute("data-state", "revealed");
     this.resetBoard();
   }
 
@@ -198,7 +198,6 @@ class Memoria {
       return;
 
     card.setAttribute("data-state", "flip");
-    card.classList.add("flipped");
 
     if (!this.hasFlippedCard) {
       this.hasFlippedCard = true;

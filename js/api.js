@@ -4,7 +4,7 @@ class F1Stats {
     this.canvas = canvasElement;
     this.ctx = canvasElement.getContext("2d");
     
-    const downloadButton = document.querySelector("#downloadButton");
+    const downloadButton = document.querySelector('main > section > button');
     this.downloadButton = downloadButton;
     
     this.pilotsData = []; // Almacenará los datos de los pilotos

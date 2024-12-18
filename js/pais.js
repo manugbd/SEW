@@ -107,8 +107,18 @@ class Pais {
       const icono = $(this).find("symbol").attr("var");
 
       let fechaLegible = new Date(fecha);
-      const diasSemana = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-      fechaLegible = `${diasSemana[fechaLegible.getDay()]} - ${fechaLegible.getDate()} || ${fechaLegible.getHours()}:00 horas`;
+      const diasSemana = [
+        "Domingo",
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado",
+      ];
+      fechaLegible = `${
+        diasSemana[fechaLegible.getDay()]
+      } - ${fechaLegible.getDate()} || ${fechaLegible.getHours()}:00 horas`;
 
       // Creamos un artículo para cada día
       let articleHtml = `
@@ -131,6 +141,69 @@ class Pais {
     // Insertamos el <section> con los artículos dentro del HTML
     $("main > section").append(sectionHtml);
   }
+
+  /**
+   * FIN PREVISION TIEMPO
+   *
+   * INICIO CARRUSEL
+   */
+  obtenerFotosFlickr() {
+    const pais = encodeURIComponent(this.nombrePais);
+    const apiKey = "5016c96475697f23594ae4242e0e50a5";
+    const url = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${pais}&format=json&nojsoncallback=1&per_page=10`;
+
+    $.ajax({
+      url: url,
+      dataType: "json",
+      success: (data) => {
+        this.mostrarFotosFlickr(data);
+      },
+      error: () => {
+        console.log("Error al obtener las fotos de Flickr.");
+      },
+    });
+  }
+
+  // Método para mostrar las fotos de Flickr en el carrusel
+  mostrarFotosFlickr(data) {
+    const photos = data.photos.photo;
+    let images = photos.map((photo) => {
+      return `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
+    });
+
+    let carouselHtml = `<ul class="carousel-images">`;
+
+    images.forEach((image, index) => {
+      const activeClass = index === 0 ? "active" : "";
+      carouselHtml += `<li class="carousel-item ${activeClass}">
+                          <img src="${image}" alt="Imagen ${index + 1}">
+                        </li>`;
+    });
+
+    carouselHtml += `</ul><button class="prev">Prev</button><button class="next">Next</button>`;
+
+    $("main>section").html(carouselHtml);
+
+    // Lógica del carrusel
+    let currentIndex = 0;
+    const totalImages = images.length;
+
+    function updateCarousel() {
+      const items = $(".carousel-item");
+      items.removeClass("active");
+      items.eq(currentIndex).addClass("active");
+    }
+
+    $(".next").click(function () {
+      currentIndex = (currentIndex + 1) % totalImages;
+      updateCarousel();
+    });
+
+    $(".prev").click(function () {
+      currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+      updateCarousel();
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -148,4 +221,5 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("section").innerHTML += infoSecundaria + coordenadas;
 
   españa.obtenerPrevisionTiempo();
+  españa.obtenerFotosFlickr();
 });

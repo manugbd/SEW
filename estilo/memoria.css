@@ -8,35 +8,67 @@
   #B9B7BD;
 */
 
-/* Especificidad 0, 0, 1 */
-section {
+/* Especificidad 0, 0, 2 */
+main > section {
   display: flex;
   flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si no hay espacio */
   justify-content: center; /* Centra los elementos en la sección */
-  width: 50%;
+  width: 45%;
 
   margin: 0 auto; /* Centrar horizontalmente */
   align-items: center; /* Centrado vertical de elementos */
-  transition: width 0.5s ease
+  transition: width 0.5s ease;
 }
 
 /**
   LOS SIGUIENTES @media:
-  - Especificidad 0, 0, 1 --> Section
+  - Especificidad 0, 0, 2 --> main > Section
   - Redefinición de width con respecto a section
 */
-@media (max-width: 1500px ) {section{width: 60%;  }}
+@media (max-width: 2000px) {
+  main > section {
+    width: 55%;
+  }
+}
 
-@media (max-width: 1200px ) {section{width: 70%; }}
+@media (max-width: 1700px) {
+  main > section {
+    width: 65%;
+  }
+}
 
-@media (max-width: 1000px ) {section{width: 80%; }}
+@media (max-width: 1500px) {
+  main > section {
+    width: 75%;
+  }
+}
 
-@media (max-width: 800px ) {section{width: 90%; }}
+@media (max-width: 1300px) {
+  main > section {
+    width: 85%;
+  }
+}
 
-@media (max-width: 600px ) {section{width: 100%; }}
+@media (max-width: 1100px) {
+  main > section {
+    width: 90%;
+  }
+}
 
-/* Especificidad 0, 0, 2 */
-section > h3 {
+@media (max-width: 800px) {
+  main > section {
+    width: 95%;
+  }
+}
+
+@media (max-width: 600px) {
+  main > section {
+    width: 100%;
+  }
+}
+
+/* Especificidad 0, 0, 3 */
+main > section > h3 {
   flex: 0 0 100%; /* El encabezado ocupa toda la fila */
   text-align: center;
 }
@@ -54,9 +86,10 @@ article {
   border-radius: 0.5rem;
   transition: transform 0.5s;
   transform-style: preserve-3d;
+  align-items: center;
 }
 
-/* Especificidad 0, 0, 2 */
+/* Especificidad 0, 0, 2  x 2*/
 article h4,
 article img {
   width: 100%;
@@ -67,9 +100,26 @@ article img {
   /* Redefinicion de backface-visibility*/
   backface-visibility: hidden; /* Oculta la parte de atrás */
   border-radius: 0.5rem; /* Bordes redondeados */
+  text-justify:auto;
 }
 
-@media (max-width: 450px) {
+/* Especificidad 0, 0, 2 */
+article h4 {
+  margin-top: 25%;
+  text-align: center;
+  font-size: 100%;
+  /* Definicion de color de primer plano con herencia del color de fondo de body */
+  color: #aa0a0af2;
+}
+
+/* Especificidad 0, 0, 2 */
+article img {
+  transform: rotateY(180deg);
+  border: .2rem solid #2b3942; /* Borde de 2px de color #354a58 */
+}
+
+
+@media (max-width: 500px) {
   /* Especificidad 0, 0, 1 */
   article {
     /* Redefinición de flex y de max-width */
@@ -78,18 +128,11 @@ article img {
     flex-basis: calc(33.33% - 1rem);
     max-width: calc(33.33% - 1rem);
   }
+  /* Especificidad 0, 0, 2 */
   article h4 {
-    font-size: 50%;
+    /*Redefinicion de font-Size con respecto de article h4*/
+    font-size: 80%;
   }
-}
-
-/* Especificidad 0, 0, 2 */
-article h4 {
-  margin: 0;
-  text-align: center;
-  font-size: 100%;
-  color: #aa0a0af2;
-  /* Definicion de color de primer plano con herencia del color de fondo de body */
 }
 
 /* Especificidad 0, 1, 1 */
@@ -107,15 +150,19 @@ article[data-state="hidden"] {
   background-color: #ccc;
 }
 
-/* Especificidad 0, 0, 2 */
-article img {
-  transform: rotateY(180deg);
-}
-
 /* Especificidad 0, 1, 2 */
-article[data-state="flip"] img {
+article[data-state="revealed"] img {
   width: 100%;
+  transform: rotateY(180deg);
   backface-visibility: visible;
 }
 
+/* Especificidad 0, 1, 1 */
+article[data-state="revealed"] {
+  transform: rotateY(180deg);
+}
 
+/* Especificidad 0, 0, 3 */
+section > section > h4 {
+  text-align: center;
+}

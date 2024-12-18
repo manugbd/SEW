@@ -42,13 +42,6 @@ class Semaforo {
     );
   }
 
-  calculateReactionTime() {
-    this.clic_moment = Date.now();
-    this.reactionTime = this.clic_moment - this.unload_moment;
-    const reactionTimeHTML = document.querySelectorAll("main > section > p");
-    reactionTimeHTML.innerText = `Tiempo de reacción: ${this.reactionTime} ms`;
-  }
-
   initSequence() {
     const lights = document.querySelector("main > section");
 
@@ -58,9 +51,9 @@ class Semaforo {
 
     // Inicia la secuencia de encendido de las luces
     setTimeout(() => {
-      this.unload_moment = Date.now();
+      this.unload_moment = Date.now(); // El semáforo comienza a apagarse
       this.endSequence();
-    }, this.difficulty * 1000 + 2000);
+    }, this.difficulty * 1000 + 2000); // El tiempo se basa en la dificultad
   }
 
   resetHTML() {
@@ -87,12 +80,12 @@ class Semaforo {
   }
 
   stopReaction() {
-    this.clic_moment = Date.now();
+    this.clic_moment = Date.now(); // Momento cuando el usuario presiona el botón
 
-    const reactionTime = this.clic_moment - this.unload_moment;
+    this.reactionTime = this.clic_moment - this.unload_moment; // Calculo del tiempo de reacción
 
     const reactionTimeParagraph = document.createElement("p");
-    reactionTimeParagraph.textContent = `Tiempo de reacción: ${reactionTime} ms`;
+    reactionTimeParagraph.textContent = `Tiempo de reacción: ${this.reactionTime} ms`;
 
     document.querySelector("main > section").appendChild(reactionTimeParagraph);
 
@@ -110,7 +103,7 @@ class Semaforo {
     const $section = $("main > section");
     const $article = $("<article></article>");
 
-    const $form = $(`
+    const $form = $(`  <!-- Formulario para ingresar los datos -->
       <h4>Añada su tiempo</h4>
       <form method="post" action="semaforo.php">
         <label for="nombre">Nombre:
@@ -134,6 +127,68 @@ class Semaforo {
 
     $article.append($form);
     $section.append($article);
+    const button = $("main > section > article > form > button")[0];
+    button.addEventListener("click", () => {
+      this.sendData();
+      this.getTopRecords();
+    });
+  }
+
+  sendData() {
+    const form = $("main > section > article > form")[0]; // Acceder al formulario
+    form.onsubmit = async (e) => {
+      e.preventDefault(); // Prevenir la recarga de la página
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("semaforo.php", {
+          method: "POST",
+          body: formData,
+        });
+
+        $("main > section > article").remove();
+        $("main > section > p").remove();
+
+        // Después de guardar el registro, obtener los mejores resultados
+      } catch (error) {
+        alert("Error al enviar los datos: " + error);
+      }
+    };
+  }
+
+  getTopRecords() {
+    try {
+      async (e) => {
+        const response = await fetch(`semaforo.php?nivel=${this.difficulty}`, {
+          method: "GET",
+          body: formData,
+        });
+        const records = await response.json();
+
+        this.displayTopRecords(records);
+      };
+    } catch (error) {
+      console.error("Error al obtener los mejores resultados:", error);
+    }
+  }
+
+  displayTopRecords(records) {
+    const section = document.querySelector("main > section");
+
+    const topRecordsSection = document.createElement("section");
+    topRecordsSection.innerHTML = "<h4>Top 10 Mejores Resultados</h4>";
+
+    const recordsList = document.createElement("ul");
+
+    records.forEach((record) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = `${record.nombre} ${record.apellidos} - Nivel: ${record.nivel} - Tiempo: ${record.tiempo} ms`;
+      recordsList.appendChild(listItem);
+    });
+
+    topRecordsSection.appendChild(recordsList);
+    section.appendChild(topRecordsSection);
   }
 }
 

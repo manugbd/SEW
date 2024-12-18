@@ -11,10 +11,11 @@ class Viajes {
         (error) => this.handleError(error)
       );
     } else {
-      document.write("La geolocalización no es soportada por este navegador.");
+      console.error("La geolocalización no es soportada por este navegador.");
     }
-  }
 
+  }
+  
   // Método para manejar errores de geolocalización
   handleError(error) {
     let message = "Error al obtener la geolocalización: ";
@@ -22,27 +23,39 @@ class Viajes {
       case error.PERMISSION_DENIED:
         message += "El usuario denegó el permiso para obtener la ubicación.";
         break;
-      case error.POSITION_UNAVAILABLE:
-        message += "La información de ubicación no está disponible.";
-        break;
-      case error.TIMEOUT:
-        message += "El tiempo de espera para obtener la ubicación se agotó.";
-        break;
-      default:
-        message += "Ocurrió un error desconocido.";
-        break;
-    }
-    document.write(message);
-  }
-
-  // Método para almacenar la posición en los atributos
-  storePosition(position) {
-    this.latitude = position.coords.latitude;
-    this.longitude = position.coords.longitude;
-
-    this.displayStaticMap();
-    this.displayDinamicMap();
-  }
+        case error.POSITION_UNAVAILABLE:
+          message += "La información de ubicación no está disponible.";
+          break;
+          case error.TIMEOUT:
+            message += "El tiempo de espera para obtener la ubicación se agotó.";
+            break;
+            default:
+              message += "Ocurrió un error desconocido.";
+              break;
+            }
+            alert(message);
+          }
+          
+          // Método para almacenar la posición en los atributos
+          storePosition(position) {
+            this.latitude = position.coords.latitude;
+            this.longitude = position.coords.longitude;
+            this.accuracy = position.coords.accuracy;
+            
+            // Opcionales: Comprobar si están disponibles antes de asignar
+            this.altitude =
+            position.coords.altitude !== null ? position.coords.altitude : null;
+            this.altitudeAccuracy =
+            position.coords.altitudeAccuracy !== null
+            ? position.coords.altitudeAccuracy
+            : null;
+            this.speed = position.coords.speed !== null ? position.coords.speed : null;
+            // Llamar a los métodos para mostrar datos y mapas
+            this.displayPosition();
+            this.displayStaticMap();
+            this.displayDinamicMap();
+            this.displayCarrusel();
+          }
 
   displayDinamicMap() {
     if (!this.latitude || !this.longitude) {
@@ -50,10 +63,12 @@ class Viajes {
       return;
     }
 
-    const article = $("main > article");
-    const mapContainer = $('<div id="mapa"></div>');
+    const section = $("main > section:first-of-type");
+    const mapContainer = $(
+      '<h4>Mapa dinamico de tu ubicación </h4> <div id="mapa"></div>'
+    );
 
-    article.append(mapContainer);
+    section.append(mapContainer);
 
     // Inicializar el mapa con Mapbox
     this.initMapbox();
@@ -81,7 +96,7 @@ class Viajes {
 
   displayStaticMap() {
     if (!this.latitude || !this.longitude) {
-      console.error("No se pueden mostrar mapas sin coordenadas.");
+      console.log("No se pueden mostrar mapas sin coordenadas.");
       return;
     }
 
@@ -101,18 +116,20 @@ class Viajes {
     const mapImage = $("<img>")
       .attr("src", mapUrl)
       .attr("alt", "Mapa estático de Mapbox en función de tu ubicación");
+    const definitionText = $("<h4>Mapa de tu ubicación</h4>");
 
-    const article = $("main > article");
-    if (article.length > 0) {
-      article.append(mapImage);
+    const section = $("main > section:first-of-type");
+    if (section.length > 0) {
+      section.append(definitionText);
+      section.append(mapImage);
     } else {
       console.error("No se encontró el contenedor donde albergar el mapa.");
     }
   }
 
   displayPosition() {
-    const locationSection = document.querySelector("main");
-    let content = `
+    let $locationSection = $("main > section:first-of-type");
+    let content = `<article>
       <h4>Datos de ubicación</h4>
       <p><strong>Latitud:</strong> ${this.latitude} grados</p>
       <p><strong>Longitud:</strong> ${this.longitude} grados</p>
@@ -128,8 +145,48 @@ class Viajes {
       <p><strong>Velocidad:</strong> ${
         this.speed !== null ? this.speed + " m/s" : "No disponible"
       }</p>
+      </article>
     `;
-    locationSection.innerHTML = content;
+    $locationSection.append(content);
+  }
+
+  displayCarrusel() {
+    const slides = querySelectorAll("main>article:first-of-type>img");
+
+    // current slide counter
+    let curSlide = 9;
+    // maximum number of slides
+    let maxSlide = slides.length - 1;
+
+    const nextSlide = document.querySelector(
+      "main>article:first-of-type>button:nth-of-type(1)"
+    );
+
+    nextSlide.addEventListener("click", function () {
+      // check if current slide is the last and reset current slide
+      curSlide === maxSlide ? curSlide = 0: curSlide++;
+
+      //   move slide by -100%
+      slides.forEach((slide, indx) => {
+        var trans = 100 * (indx - curSlide);
+        $(slide).css("transform", "translateX(" + trans + "%)");
+      });
+    });
+
+    const prevSlide = document.querySelector(
+      "main>article:first-of-type>button:nth-of-type(2)"
+    );
+
+    prevSlide.addEventListener("click", function () {
+      // check if current slide is the first and reset current slide to last
+      curSlide === 0 ? curSlide = maxSlide: curSlide--;
+
+      //   move slide by 100%
+      slides.forEach((slide, indx) => {
+        var trans = 100 * (indx - curSlide);
+        $(slide).css("transform", "translateX(" + trans + "%)");
+      });
+    });
   }
 }
 

@@ -1,0 +1,5 @@
+id,nombre,localizacion,longitud
+id,nombre,pais_origen,presupuesto
+id,nombre,equipo,nacionalidad,puntos
+id,id_piloto,id_circuito,posicion
+id,año,campeon_piloto,campeon_equipo
