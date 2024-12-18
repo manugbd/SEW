@@ -5,7 +5,7 @@
 
 /* Especificidad 0, 0, 1 */
 header {
-  background-color: #ff1100ef;
+  background-color: #ff1100;
   color: #e5e5e5;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-shadow: 0 0.1rem .8rem rgba(0, 0, 0, 0.1); /* Sombra ligera */
@@ -40,6 +40,13 @@ nav a {
 
 /* Especificidad 0, 1, 2 */
 nav a.active {
+  background-color: rgb(80, 10, 10); /* Fondo más oscuro */
+  color: #ffcc00; /* Cambia el color del texto a amarillo */
+  font-weight: bold;
+}
+
+/* Especificidad 0, 1, 2 */
+nav a:hover {
   background-color: rgb(80, 10, 10); /* Fondo más oscuro */
   color: #ffcc00; /* Cambia el color del texto a amarillo */
   font-weight: bold;
