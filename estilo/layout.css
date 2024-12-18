@@ -29,7 +29,7 @@ nav {
 /* Especificidad 0, 0, 2 */
 nav a {
   color: #e5e5e5  ;
-  background-color: #542622ef;
+  background-color: #000000ef;
   text-decoration: none;
   padding: 0.8vh 1vw;
   line-height: 2em;
