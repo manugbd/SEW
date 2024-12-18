@@ -7,11 +7,12 @@
 header {
   background-color: #ff1100ef;
   color: #e5e5e5;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-shadow: 0 0.1rem .8rem rgba(0, 0, 0, 0.1); /* Sombra ligera */
   padding: 2vh 4vw; /* Espacio interior */
   justify-content: space-between; /* Distribuye h1 y nav */
   align-items: center; /* Centra verticalmente */
-
+  font-weight: bold;
   display: flex;
   flex-direction: column;
 }
@@ -19,7 +20,7 @@ header {
 /* Especificidad 0, 0, 1 */
 nav {
   justify-content: center;
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 0.1vw;
   padding-top: 0.5em; /* Espacio interior */
   flex-wrap: wrap;
@@ -27,8 +28,8 @@ nav {
 
 /* Especificidad 0, 0, 2 */
 nav a {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.716);
+  color: #e5e5e5  ;
+  background-color: #542622ef;
   text-decoration: none;
   padding: 0.8vh 1vw;
   line-height: 2em;

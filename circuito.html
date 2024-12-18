@@ -39,7 +39,7 @@
 
       <!-- Datos con el contenidos que aparece en el navegador -->
       <nav>
-        <a href="index.html" title="Inicio">Inicio</a>
+        <a href="index.html" title="Enlace a la pestaña de Inicio">Inicio</a>
         <a href="piloto.html" title="Enlace a la sección del piloto">Piloto</a>
         <a href="noticias.html" title="Enlace al apartado de noticias"
           >Noticias</a
@@ -58,21 +58,33 @@
       </nav>
     </header>
 
-    <p>Estás en: <a href="index.html" title="Inicio">Inicio</a> >> Circuito</p>
+    <p>
+      Estás en:
+      <a href="index.html" title="Enlace a la pestaña de Inicio">Inicio</a> >>
+      Circuito
+    </p>
 
     <main>
       <h2>Circuito</h2>
       <section>
-        <h4>Indique el archivo SVG a cargar:</h4>
-        <input type="file" accept=".svg" aria-label="Cargar archivos svg" />
-        <!-- Contenido de JS -->
+        <h3>Carga de Archivos</h3>
+        <section>
+          <h4>Indique el archivo SVG a cargar:</h4>
+          <input type="file" accept=".svg" aria-label="Cargar archivos svg" />
+          <!-- Contenido de JS -->
+        </section>
+        <article>
+          <h4>Indique el archivo XML o KML a cargar:</h4>
+          <input
+            type="file"
+            accept=".xml,.kml"
+            multiple
+            aria-label="Cargar
+        archivos XML o KML"
+          />
+          <!-- Contenido de JS -->
+        </article>
       </section>
-      <article>
-        <h4>Indique el archivo XML o KML a cargar:</h4>
-        <input type="file" accept=".xml,.kml" multiple aria-label="Cargar
-        archivos XML o KML" />
-        <!-- Contenido de JS -->
-      </article>
     </main>
 
     <footer>
@@ -80,7 +92,7 @@
         Trabajo realizado por <strong>Manuel García Baldó</strong>, estudiante
         de la
         <a
-          href="https://ingenieriainformatica.uniovi.es" 
+          href="https://ingenieriainformatica.uniovi.es"
           title="Enlace a la web oficial de la EII"
           >Escuela de Ingeniería Informática</a
         >

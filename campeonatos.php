@@ -51,7 +51,7 @@ if (isset($_POST['exportar'])) {
 
         <!-- Datos con el contenidos que aparece en el navegador -->
         <nav>
-            <a href="index.html" title="Inicio">Inicio</a>
+            <a href="index.html" title="Enlace a la pestaña de Inicio">Inicio</a>
             <a href="piloto.html" title="Enlace a la sección del piloto">Piloto</a>
             <a href="noticias.html" title="Enlace al apartado de noticias">Noticias</a>
             <a href="calendario.html" title="Enlace al calendario de la temporada">Calendario</a>
@@ -63,7 +63,7 @@ if (isset($_POST['exportar'])) {
     </header>
 
     <p>
-        Estás en: <a href="index.html" title="Inicio">Inicio</a> >>
+        Estás en: <a href="index.html" title="Enlace a la pestaña de Inicio">Inicio</a> >>
         <a href="juegos.html" title="Enlace al apartado de juegos">Juegos</a> >>
         Campeonato
     </p>
@@ -74,7 +74,7 @@ if (isset($_POST['exportar'])) {
             <a href="memoria.html" title="Juego de memoria">Memoria</a>
             <a href="semaforo.php" title="Juego del semaforo">Semaforo</a>
             <a href="api.html" title="APIs extra">APIs</a>
-            <a href="campeonatos.php" title="Campeonatos">Campeonatos</a>
+            <a href="campeonatos.php" title="Campeonatos" class="active">Campeonatos</a>
         </nav>
 
         <section>

@@ -240,8 +240,9 @@ main > section > img {
   F1 STATS - Uso de 3 APIS
 **/
 
-/* Especificidad 0, 0, 2 */
-section > input {
+/* Especificidad 0, 0, 2  x2*/
+section > input,
+article > input{
   padding: 1%;
   margin-bottom: 1%;
   display: block;
